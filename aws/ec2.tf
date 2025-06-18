@@ -126,6 +126,7 @@ resource "aws_instance" "backend" {
   vpc_security_group_ids      = [aws_security_group.ec2_sg.id]
   associate_public_ip_address = true
   iam_instance_profile        = aws_iam_instance_profile.ec2_backend_profile.name
+  key_name                    = var.ec2_key_name
 
   tags = {
     Name = "fastapi-backend"

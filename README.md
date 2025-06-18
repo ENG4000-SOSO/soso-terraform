@@ -3,10 +3,15 @@
 This project defines the full AWS infrastructure for a scheduling system using **Terraform**. It is specific to AWS (hence the [`aws` folder](aws/)). It provisions:
 
 - A public **VPC** with networking components
+
 - An **EC2 instance** for running the FastAPI backend and PostgreSQL database
+
 - A **DynamoDB table** to store scheduling metadata
+
 - An **S3 bucket** for storage
+
 - An **ECS Fargate task definition** for running the heavy-duty scheduler on demand
+
 - All necessary **IAM roles and policies**
 
 ## Explanation of Files
@@ -47,7 +52,13 @@ This project defines the full AWS infrastructure for a scheduling system using *
    export AWS_PROFILE=admin-user
    ```
 
-3. **Make Sure You're in the `aws` Directory**
+3. **Create a Key Pair in AWS (Or Make Sure You Have an Existing Key Pair)**
+
+   You need to specify a key pair as part of the provisioning process. This gets used in the EC2 provisioning so that you can SSH into the EC2 instance from the terminal of your local machine.
+
+   For more information on EC2 key pairs: [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
+
+4. **Make Sure You're in the `aws` Directory**
 
    You need to be in the directory with the `.tf` files for the following commands to work.
 
@@ -55,19 +66,19 @@ This project defines the full AWS infrastructure for a scheduling system using *
    cd aws
    ```
 
-4. **Initialize Terraform**
+5. **Initialize Terraform**
 
    ```bash
    terraform init
    ```
 
-5. **Preview the Plan**
+6. **Preview the Plan**
 
    ```bash
    terraform plan
    ```
 
-6. **Apply the Configuration**
+7. **Apply the Configuration**
 
    ```bash
    terraform apply
@@ -75,7 +86,7 @@ This project defines the full AWS infrastructure for a scheduling system using *
 
    Confirm with yes to deploy.
 
-7. **Check Outputs**
+8. **Check Outputs**
 
    After apply completes, Terraform will output:
 
@@ -87,7 +98,7 @@ This project defines the full AWS infrastructure for a scheduling system using *
 
    - Log group name
 
-8. **If You Want to Teardown**
+9. **If You Want to Teardown**
 
    To delete all provisioned resources:
 
